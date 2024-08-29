@@ -21,8 +21,26 @@ choicesButtons.forEach(btn => {
     btn.addEventListener('click', () => playGame(btn.dataset.choice));
 });
 
-resetButton.addEventListener('click', resetScore);
+resetButton.addEventListener('click', showConfirmMessage);
 
+// reset game message :
+const confirmResetMessage = document.querySelector('.confirm-reset');
+const overlay = document.querySelector('.overlay');
+
+const noButton = document.querySelector('button.no');
+const yesButton = document.querySelector('button.yes');
+
+noButton.addEventListener('click', () => {
+    hideConfirmMessage();
+});
+
+yesButton.addEventListener('click', () => {
+    hideConfirmMessage();
+    resetScore();
+    clearResultAndWinner();
+});
+
+// auto-play feature :
 let autoplayActivated = false;
 let autoplayGame;
 
@@ -40,6 +58,7 @@ autoplayButton.addEventListener('click', () => {
     }
 });
 
+// main function :
 function playGame(choice) {
 
     const playerChoice = choice;
@@ -63,6 +82,8 @@ function playGame(choice) {
     else draw();
 }
 
+
+// used functions :
 function pickRandomChoice() {
     const move = choicesArray[Math.floor(Math.random() * choicesArray.length)];
     return move;
@@ -113,7 +134,17 @@ function resetScore() {
     }
 }
 
-let test = false;
-console.log(test);
-test = !test;
-console.log(test);
+function showConfirmMessage() {
+    confirmResetMessage.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
+
+function hideConfirmMessage() {
+    confirmResetMessage.classList.add('hidden');
+    overlay.classList.add('hidden');
+}
+
+function clearResultAndWinner() {
+    choicesResult.innerHTML = '';
+    winner.innerHTML = '';
+}
