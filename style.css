@@ -1,0 +1,41 @@
+body {
+
+    background: #111;
+    color: #fafafa;
+    font-family: Arial;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1.title {
+    text-transform:capitalize;
+    text-align: center;
+}
+
+button.choice {
+    background: none;
+    border: 1px solid #fafafa;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .6s;
+}
+
+button.choice:hover {
+    transform: scale(1.05);
+}
+
+button.choice img {
+    width: 75px;
+}
+
+img.small {
+    width: 50px;
+}
+
+hr {
+    width: 300px;
+}
