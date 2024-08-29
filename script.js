@@ -3,6 +3,7 @@ const choicesResult = document.querySelector('.choices-result');
 const winner = document.querySelector('.winner');
 const score = document.querySelector('.score');
 const resetButton = document.querySelector('button.reset-score');
+const autoplayButton = document.querySelector('button.auto-play');
 
 let choicesArray = [];
 choicesButtons.forEach(btn => choicesArray.push(btn.dataset.choice));
@@ -21,6 +22,23 @@ choicesButtons.forEach(btn => {
 });
 
 resetButton.addEventListener('click', resetScore);
+
+let autoplayActivated = false;
+let autoplayGame;
+
+autoplayButton.addEventListener('click', () => {
+    
+    autoplayActivated = !autoplayActivated;
+    
+    if (autoplayActivated === true) {
+        autoplayGame = setInterval(() => {
+            const autoplayChoice = pickRandomChoice();
+            playGame(autoplayChoice);
+        }, 2000);
+    } else {
+        clearInterval(autoplayGame);
+    }
+});
 
 function playGame(choice) {
 
@@ -94,3 +112,8 @@ function resetScore() {
         displayScore();
     }
 }
+
+let test = false;
+console.log(test);
+test = !test;
+console.log(test);

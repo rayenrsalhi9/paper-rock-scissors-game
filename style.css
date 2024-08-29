@@ -39,3 +39,11 @@ img.small {
 hr {
     width: 300px;
 }
+
+button {
+    cursor: pointer;
+}
+
+button.auto-play {
+    margin-top: 5px;
+}
